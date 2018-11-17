@@ -1,29 +1,43 @@
-<div [hidden]="user">
-  <h1>Sign In with Your Phone Number</h1>
+<div class="container-fluid test" [hidden]="user">
+  <form class="form-signin">
+    <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1> <i class="fa fa-phone text-styling " aria-hidden="true"> Phone Auth</i></h1>
+    <p>Please enter your mobile number to verify Login</p>
+    <div class="row">
+      <div class="col">
+        <input type="text" [(ngModel)]="phoneNumber.country" class="input form-control" placeholder="+91" maxlength="2"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-sm-3">
+        <input type="text" [(ngModel)]="phoneNumber.area" class="input form-control" placeholder="xxx" maxlength="3"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-sm-3">
+        <input type="text" [(ngModel)]="phoneNumber.prefix" class="input form-control" placeholder="xxx" maxlength="3"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-sm-3">
+        <input type="text" [(ngModel)]="phoneNumber.line" class="input form-control" placeholder="xxxx" maxlength="4"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <br />
+    <div id="recaptcha-container"></div>
+    <br />
+    <button class="btn btn-lg btn-primary btn-block" (click)="sendLoginCode()">SMS Text Login Code</button>
 
-  <label for="phone">Phone Number</label><br>
-  <input type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="+91"    maxlength="2">
-  <input type="text" [(ngModel)]="phoneNumber.area"     class="input" placeholder="xxx"  maxlength="3">
-  <input type="text" [(ngModel)]="phoneNumber.prefix"   class="input" placeholder="xxx"  maxlength="3">
-  <input type="text" [(ngModel)]="phoneNumber.line"     class="input" placeholder="xxxx" maxlength="4">
-
-  <div id="recaptcha-container"></div>
-
-  <button (click)="sendLoginCode()">SMS Text Login Code</button>
-
-  <div *ngIf="windowRef.confirmationResult">
-    <hr>
-    <label for="code">Enter your Verification Code Here</label><br>
-    <input type="text" name="code" [(ngModel)]="verificationCode">
-
-    <button (click)="verifyLoginCode()">Verify</button>
-  </div>
-
+    <div *ngIf="windowRef.confirmationResult">
+      <hr>
+      <label for="code">Enter your Verification Code Here</label><br>
+      <input type="text" name="code" [(ngModel)]="verificationCode" class="input form-control" [ngModelOptions]="{standalone: true}">
+      <br />
+      <button class="btn btn-lg btn-primary btn-block" (click)="verifyLoginCode()">Verify</button>
+    </div>
+  </form>
 </div>
-
-<div *ngIf="user">
-  You have successfully logged in with your phone number!
-
-  UserId: {{ user?.uid }}
+<div class="container-fluid test" *ngIf="user">
+  <h1 class="text-styling text-center">You have successfully logged in with your phone number!</h1>
+  <br>
+  <h3 class="text-center">UserId: {{ user?.uid }}</h3>
 
 </div>
