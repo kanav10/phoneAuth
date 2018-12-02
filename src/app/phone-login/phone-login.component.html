@@ -31,13 +31,28 @@
       <label for="code">Enter your Verification Code Here</label><br>
       <input type="text" name="code" [(ngModel)]="verificationCode" class="input form-control" [ngModelOptions]="{standalone: true}">
       <br />
-      <button class="btn btn-lg btn-primary btn-block" (click)="verifyLoginCode()">Verify</button>
+      <button class="btn btn-lg btn-primary btn-block" (click)="verifyLoginCode()">Continue</button>
     </div>
   </form>
 </div>
 <div class="container-fluid test" *ngIf="user">
-  <h1 class="text-styling text-center">You have successfully logged in with your phone number!</h1>
-  <br>
-  <h3 class="text-center">UserId: {{ user?.uid }}</h3>
+  <form class="form-signin" [hidden]="newcheck">
+    <p style="margin-left: 20px;">Please scan the generated barcode</p>
+    <div style="margin-left: 95px;">
+      <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="value">
+      </ngx-qrcode>
+    </div>
+    <br>
+    <input type="text" class="form-control" [(ngModel)]="check" [ngModelOptions]="{standalone: true}">
+    <br>
+
+    <button class="btn btn-lg btn-primary btn-block" (click)="barcodeCheck()">Verify</button>
+
+  </form>
+  <div *ngIf="newcheck == true">
+    <h1 class="text-styling text-center">You have successfully logged in with your phone number!</h1>
+    <br>
+    <h3 class="text-center">UserId: {{ user?.uid }}</h3>
+  </div>
 
 </div>

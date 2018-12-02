@@ -21,8 +21,11 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@types/node": "^8.9.5",
     "core-js": "^2.5.4",
     "firebase": "^5.5.8",
+    "jsbarcode": "^3.11.0",
+    "ngx-qrcode2": "0.0.9",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },

@@ -9,6 +9,8 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 
 import {WindowService} from '../services/window.service';
 import { PhoneLoginComponent } from './phone-login/phone-login.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { PhoneLoginComponent } from './phone-login/phone-login.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    NgxQRCodeModule
+
     
   ],
   providers: [WindowService],
